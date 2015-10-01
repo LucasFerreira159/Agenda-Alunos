@@ -12,6 +12,8 @@
     tools:showIn="@layout/lista_alunos"
     tools:context=".ListaAlunosActivity">
 
+
+
     <ListView
         android:id="@+id/listaDeAlunos"
         android:layout_width="match_parent"
