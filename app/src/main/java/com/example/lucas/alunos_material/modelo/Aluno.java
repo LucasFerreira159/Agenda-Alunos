@@ -11,6 +11,16 @@ public class Aluno implements Serializable{
     private String nome, endereco, site, telefone, foto;
     private double nota;
 
+    public Aluno(Long id, String nome, String endereco, String site, String telefone, String foto, double nota) {
+        this.id = id;
+        this.nome = nome;
+        this.endereco = endereco;
+        this.site = site;
+        this.telefone = telefone;
+        this.foto = foto;
+        this.nota = nota;
+    }
+
     public Long getId() {
         return id;
     }
@@ -65,5 +75,10 @@ public class Aluno implements Serializable{
 
     public void setFoto(String foto) {
         this.foto = foto;
+    }
+
+    @Override
+    public String toString() {
+        return "Aluno: " + getNome() + "\nTelefone: " + getTelefone();
     }
 }

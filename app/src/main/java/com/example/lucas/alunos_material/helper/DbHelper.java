@@ -11,7 +11,7 @@ import android.util.Log;
 public class DbHelper extends SQLiteOpenHelper {
 
     private static final String NAME = "db_aluno";
-    private static final int VERSION = 1;
+    private static final int VERSION = 3;
     public static final String TAB_ALUNOS = "Alunos";
 
     public DbHelper(Context ctx) {
@@ -24,7 +24,7 @@ public class DbHelper extends SQLiteOpenHelper {
             String sql = "CREATE TABLE " + TAB_ALUNOS
                     + " (id INTEGER PRIMARY KEY," +
                     "nome TEXT UNIQUE NOT NULL," +
-                    "telefone TEXT," +
+                    "telefone TEXT NOT NULL," +
                     "site TEXT," +
                     "nota REAL," +
                     "foto TEXT" +

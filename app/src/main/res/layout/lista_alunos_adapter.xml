@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/nome_adapter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Aluno"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#00796b"
+        android:layout_alignLeft="@+id/telefone_adapter"/>
+
+    <ImageView
+        android:id="@+id/icon_tel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_phone_black_18dp"
+        android:layout_below="@+id/nome_adapter"/>
+
+    <TextView
+        android:id="@+id/telefone_adapter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Telefone"
+        android:layout_alignBaseline="@+id/icon_tel"
+        android:layout_toRightOf="@+id/icon_tel"
+        android:layout_below="@+id/nome_adapter"
+        android:layout_marginLeft="5dp"/>
+
+</RelativeLayout>
