@@ -14,9 +14,13 @@ import com.example.lucas.alunos_material.dao.AlunoDAO;
 import com.example.lucas.alunos_material.helper.FormularioAlunoHelper;
 import com.example.lucas.alunos_material.modelo.Aluno;
 
+import java.io.Serializable;
+
 public class FormularioAlunoActivity extends AppCompatActivity {
 
     FormularioAlunoHelper helper;
+    Aluno alunoAlterado;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +31,17 @@ public class FormularioAlunoActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         helper = new FormularioAlunoHelper(this);
+
+        //Recuperando informações de outra activity
+        alunoAlterado = (Aluno) getIntent().getSerializableExtra("alunoSelecionado");
+
+
+           /* Verifica se esta vindo um dado ou não
+            se estiver , vai atualizar, se vir nulo vai cadastrar um novo*/
+        if(alunoAlterado != null){
+            helper.colocaAlunoNoFormulario(alunoAlterado);
+        }
+
     }
 
     @Override
@@ -41,16 +56,20 @@ public class FormularioAlunoActivity extends AppCompatActivity {
         if (id == R.id.mnConfirmaAluno) {
 
             Aluno aluno = helper.pegaAlunoDoFormulario();
-
             AlunoDAO dao = new AlunoDAO(FormularioAlunoActivity.this);
-            dao.insere(aluno);
 
+            if(alunoAlterado != null){
+                aluno.setId(alunoAlterado.getId());
+                dao.atualizar(aluno);
+            }else{
 
-            Toast.makeText(FormularioAlunoActivity.this, "Aluno Cadastrado", Toast.LENGTH_SHORT).show();
+                dao.insere(aluno);
+                Toast.makeText(FormularioAlunoActivity.this, "Aluno Cadastrado", Toast.LENGTH_SHORT).show();
+            }
+
             finish();
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 }

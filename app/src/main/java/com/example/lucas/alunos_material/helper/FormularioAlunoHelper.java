@@ -12,14 +12,15 @@ import com.example.lucas.alunos_material.modelo.Aluno;
  */
 public class FormularioAlunoHelper {
 
-    private EditText campoNome, campoEndereco, campoSite, campoTelefone;
+    private EditText campoNome, campoSite, campoTelefone;
+    private String nome,site,telefone;
+    private double nota;
     private RatingBar campoNota;
     Aluno aluno;
 
     public FormularioAlunoHelper(FormularioAlunoActivity f) {
 
         campoNome = (EditText) f.findViewById(R.id.nome);
-        campoEndereco = (EditText) f.findViewById(R.id.endereco);
         campoSite = (EditText) f.findViewById(R.id.site);
         campoTelefone = (EditText) f.findViewById(R.id.telefone);
         campoNota = (RatingBar) f.findViewById(R.id.nota);
@@ -27,20 +28,25 @@ public class FormularioAlunoHelper {
 
     public Aluno pegaAlunoDoFormulario(){
 
-        String nome = campoNome.getText().toString();
-        String endereco = campoEndereco.getText().toString();
-        String site = campoSite.getText().toString();
-        String telefone = campoTelefone.getText().toString();
-        double nota = campoNota.getRating();
+        nome = campoNome.getText().toString();
+        site = campoSite.getText().toString();
+        telefone = campoTelefone.getText().toString();
+        nota = campoNota.getRating();
 
         aluno = new Aluno();
 
         aluno.setNome(nome);
-        aluno.setEndereco(endereco);
         aluno.setSite(site);
         aluno.setTelefone(telefone);
         aluno.setNota(nota);
 
         return aluno;
+    }
+
+    public void colocaAlunoNoFormulario(Aluno alunoAlterado) {
+       campoNome.setText(alunoAlterado.getNome());
+       campoSite.setText(alunoAlterado.getSite());
+       campoTelefone.setText(alunoAlterado.getTelefone());
+       campoNota.setRating((float) alunoAlterado.getNota());
     }
 }

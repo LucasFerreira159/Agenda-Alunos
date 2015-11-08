@@ -48,7 +48,7 @@ public class AlunoAdapter extends BaseAdapter {
         View layout = inflater.inflate(R.layout.lista_alunos_adapter, null);
 
         TextView nome = (TextView) layout.findViewById(R.id.nome_adapter);
-
+        nome.setText(aluno.getNome());
 
         TextView telefone = (TextView) layout.findViewById(R.id.telefone_adapter);
         telefone.setText(aluno.getTelefone());

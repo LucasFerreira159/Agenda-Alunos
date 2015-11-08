@@ -62,4 +62,28 @@ public class AlunoDAO {
         }
         return alunos;
     }
+
+    public void deletar(Aluno aluno) {
+        String[] args = {aluno.getId().toString()};
+        escreve.delete(DbHelper.TAB_ALUNOS, "id=?", args);
+    }
+
+    public void atualizar(Aluno aluno) {
+        ContentValues cv = new ContentValues();
+        cv.put("nome", aluno.getNome());
+        cv.put("telefone", aluno.getTelefone());
+        cv.put("site", aluno.getSite());
+        cv.put("nota", aluno.getNota());
+        cv.put("foto", aluno.getFoto());
+
+        try {
+            String[] args = {aluno.getId().toString()};
+
+            escreve.update(DbHelper.TAB_ALUNOS, cv, "id=?", args);
+
+            Log.i("INFO", "Dados Atualizados");
+        } catch (Exception e) {
+            Log.e("INFO", "Erro ao Inserir Dado" + e.getMessage());
+        }
+    }
 }

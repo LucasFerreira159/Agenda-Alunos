@@ -30,20 +30,11 @@
         android:inputType="textPersonName"/>
 
     <EditText
-        android:id="@+id/endereco"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/nome"
-        android:layout_below="@+id/nome"
-        android:hint="Endereço"
-        android:inputType="textPersonName"/>
-
-    <EditText
         android:id="@+id/telefone"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/nome"
-        android:layout_below="@+id/endereco"
+        android:layout_below="@+id/nome"
         android:hint="Telefone"
         android:inputType="phone"/>
 
