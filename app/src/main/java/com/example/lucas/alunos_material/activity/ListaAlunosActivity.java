@@ -89,40 +89,44 @@ public class ListaAlunosActivity extends AppCompatActivity {
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
 
-        /*MenuItem ligar = menu.add("Ligar");
+  /*      final MenuItem ligar = menu.add("Ligar");
         ligar.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
-
-                Intent irParaATelaDeLigar = new Intent(Intent.ACTION_CALL);
-
-                Uri telefonoDoAluno = Uri.parse("tel:" + aluno.getTelefone());
-
-                irParaATelaDeLigar.setData(telefonoDoAluno);
-
-                startActivity(irParaATelaDeLigar);
-                return false;
-            }
-        });*/
-
-        menu.add("Enviar SMS");
-        menu.add("Achar no mapa");
-        MenuItem site = menu.add("Navegar no site");
-
-        /*Navegar para site do Aluno*/
-        site.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-
-                Uri siteAluno = Uri.parse("http://" + aluno.getSite());
-
-                Intent abrirSite = new Intent(Intent.ACTION_VIEW);
-                abrirSite.setData(siteAluno);
-
-                startActivity(abrirSite);
+                Intent ligarAluno = new Intent(Intent.ACTION_CALL);
+                ligarAluno.setData(Uri.parse("tel:" + aluno.getTelefone()));
+                startActivity(ligarAluno);
                 return false;
             }
         });
+*/
+        /*Envia Mensagem*/
+        MenuItem enviarMsgAluno = menu.add("Enviar SMS");
+        enviarMsgAluno.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+
+                Intent enviarMsg = new Intent(Intent.ACTION_VIEW);
+                enviarMsg.setData(Uri.parse("sms: " + aluno.getTelefone()));
+                enviarMsg.putExtra("sms_body", "");
+                startActivity(enviarMsg);
+
+                return false;
+            }
+        });
+
+        MenuItem site = menu.add("Navegar no site");
+        site.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                Intent intentSite = new Intent(Intent.ACTION_VIEW);
+                String http = aluno.getSite().startsWith("http://")?"":"http://";
+                intentSite.setData(Uri.parse(http+aluno.getSite()));
+                startActivity(intentSite);
+                return false;
+            }
+        });
+
 
         /*Deletar aluno do formulario*/
         MenuItem deletar = menu.add("Deletar");
