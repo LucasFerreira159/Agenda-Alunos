@@ -1,6 +1,9 @@
 package com.example.lucas.alunos_material.activity;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -85,11 +88,43 @@ public class ListaAlunosActivity extends AppCompatActivity {
 
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-        menu.add("Ligar");
+
+        /*MenuItem ligar = menu.add("Ligar");
+        ligar.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+
+                Intent irParaATelaDeLigar = new Intent(Intent.ACTION_CALL);
+
+                Uri telefonoDoAluno = Uri.parse("tel:" + aluno.getTelefone());
+
+                irParaATelaDeLigar.setData(telefonoDoAluno);
+
+                startActivity(irParaATelaDeLigar);
+                return false;
+            }
+        });*/
+
         menu.add("Enviar SMS");
         menu.add("Achar no mapa");
-        menu.add("Navegar no site");
+        MenuItem site = menu.add("Navegar no site");
 
+        /*Navegar para site do Aluno*/
+        site.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+
+                Uri siteAluno = Uri.parse("http://" + aluno.getSite());
+
+                Intent abrirSite = new Intent(Intent.ACTION_VIEW);
+                abrirSite.setData(siteAluno);
+
+                startActivity(abrirSite);
+                return false;
+            }
+        });
+
+        /*Deletar aluno do formulario*/
         MenuItem deletar = menu.add("Deletar");
         deletar.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
