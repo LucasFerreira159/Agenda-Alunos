@@ -42,7 +42,7 @@ public class ListaAlunosActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(ListaAlunosActivity.this, FormularioAlunoActivity.class);
+                Intent i = new Intent(ListaAlunosActivity.this, FormularioAlunosActivity2.class);
                 startActivity(i);
             }
         });
@@ -69,7 +69,7 @@ public class ListaAlunosActivity extends AppCompatActivity {
 
                 Aluno alunoParaSerAlterado = (Aluno) parent.getItemAtPosition(position);
 
-                Intent visualizar = new Intent(ListaAlunosActivity.this, FormularioAlunoActivity.class);
+                Intent visualizar = new Intent(ListaAlunosActivity.this, FormularioAlunosActivity2.class);
                 visualizar.putExtra("alunoSelecionado", alunoParaSerAlterado);
                 startActivity(visualizar);
             }

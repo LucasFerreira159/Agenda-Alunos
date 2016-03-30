@@ -4,7 +4,7 @@ import android.widget.EditText;
 import android.widget.RatingBar;
 
 import com.example.lucas.alunos_material.R;
-import com.example.lucas.alunos_material.activity.FormularioAlunoActivity;
+import com.example.lucas.alunos_material.activity.FormularioAlunosActivity2;
 import com.example.lucas.alunos_material.modelo.Aluno;
 
 /**
@@ -18,7 +18,7 @@ public class FormularioAlunoHelper {
     private RatingBar campoNota;
     Aluno aluno;
 
-    public FormularioAlunoHelper(FormularioAlunoActivity f) {
+    public FormularioAlunoHelper(FormularioAlunosActivity2 f) {
 
         campoNome = (EditText) f.findViewById(R.id.nome);
         campoSite = (EditText) f.findViewById(R.id.site);

@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".activity.ListaAlunosActivity">
+    tools:context=".activity.FormularioAlunosActivity2">
+
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -13,22 +14,26 @@
         android:theme="@style/AppTheme.AppBarOverlay">
 
         <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
+            android:id="@+id/toolbarForAluno"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
             app:popupTheme="@style/AppTheme.PopupOverlay" />
-
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/conteudo_lista_alunos" />
+
+    <include layout="@layout/content_formulario_aluno_2" />
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
+        android:id="@+id/fabFoto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
-        android:src="@drawable/ic_plus_white_36dp" />
+        android:src="@drawable/ic_camera_white_36dp"
+        app:layout_anchor="@+id/fotoAluno"
+        app:layout_anchorGravity="end|bottom"
+        android:elevation="2dp"/>
+
+
 
 </android.support.design.widget.CoordinatorLayout>
