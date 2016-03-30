@@ -1,5 +1,7 @@
 package com.example.lucas.alunos_material.activity;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.app.Activity;
 import com.example.lucas.alunos_material.R;
@@ -7,11 +9,17 @@ import com.example.lucas.alunos_material.dao.AlunoDAO;
 import com.example.lucas.alunos_material.helper.FormularioAlunoHelper;
 import com.example.lucas.alunos_material.modelo.Aluno;
 
+import android.provider.MediaStore;
+import android.provider.Settings;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
+
+import java.io.File;
 
 public class FormularioAlunosActivity2 extends AppCompatActivity {
 
@@ -39,6 +47,19 @@ public class FormularioAlunosActivity2 extends AppCompatActivity {
         if(alunoAlterado != null){
             helper.colocaAlunoNoFormulario(alunoAlterado);
         }
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fabFoto);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent camera = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                String caminhoFoto = getExternalFilesDir(null) + "/" + System.currentTimeMillis() + ".jpg";
+                File arquivoFoto = new File(caminhoFoto);
+
+                camera.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(arquivoFoto));
+                startActivity(camera);
+            }
+        });
 
     }
 
