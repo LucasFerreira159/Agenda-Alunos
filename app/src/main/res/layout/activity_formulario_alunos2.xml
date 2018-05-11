@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".activity.FormularioAlunosActivity2">
+    tools:context=".activity.FormularioAlunosActivity">
 
 
     <android.support.design.widget.AppBarLayout
@@ -29,7 +29,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/fab_margin"
-        android:src="@drawable/ic_camera_white_36dp"
+        android:src="@drawable/ic_camera_alt_white_24dp"
         app:layout_anchor="@+id/fotoAluno"
         app:layout_anchorGravity="end|bottom"
         android:elevation="2dp"/>

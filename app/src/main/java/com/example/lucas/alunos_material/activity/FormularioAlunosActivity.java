@@ -3,14 +3,13 @@ package com.example.lucas.alunos_material.activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.app.Activity;
+
 import com.example.lucas.alunos_material.R;
 import com.example.lucas.alunos_material.dao.AlunoDAO;
 import com.example.lucas.alunos_material.helper.FormularioAlunoHelper;
 import com.example.lucas.alunos_material.modelo.Aluno;
 
 import android.provider.MediaStore;
-import android.provider.Settings;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -21,7 +20,7 @@ import android.widget.Toast;
 
 import java.io.File;
 
-public class FormularioAlunosActivity2 extends AppCompatActivity {
+public class FormularioAlunosActivity extends AppCompatActivity {
 
     FormularioAlunoHelper helper;
     Aluno alunoAlterado;
@@ -75,7 +74,7 @@ public class FormularioAlunosActivity2 extends AppCompatActivity {
         if (id == R.id.mnConfirmaAluno) {
 
             Aluno aluno = helper.pegaAlunoDoFormulario();
-            AlunoDAO dao = new AlunoDAO(FormularioAlunosActivity2.this);
+            AlunoDAO dao = new AlunoDAO(FormularioAlunosActivity.this);
 
             if(alunoAlterado != null){
                 aluno.setId(alunoAlterado.getId());
@@ -83,7 +82,7 @@ public class FormularioAlunosActivity2 extends AppCompatActivity {
             }else{
 
                 dao.insere(aluno);
-                Toast.makeText(FormularioAlunosActivity2.this, "Aluno Cadastrado", Toast.LENGTH_SHORT).show();
+                Toast.makeText(FormularioAlunosActivity.this, "Aluno Cadastrado", Toast.LENGTH_SHORT).show();
             }
 
             finish();

@@ -1,19 +1,15 @@
 package com.example.lucas.alunos_material.activity;
 
-import android.Manifest;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.ContextMenu;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -42,7 +38,7 @@ public class ListaAlunosActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(ListaAlunosActivity.this, FormularioAlunosActivity2.class);
+                Intent i = new Intent(ListaAlunosActivity.this, FormularioAlunosActivity.class);
                 startActivity(i);
             }
         });
@@ -69,7 +65,7 @@ public class ListaAlunosActivity extends AppCompatActivity {
 
                 Aluno alunoParaSerAlterado = (Aluno) parent.getItemAtPosition(position);
 
-                Intent visualizar = new Intent(ListaAlunosActivity.this, FormularioAlunosActivity2.class);
+                Intent visualizar = new Intent(ListaAlunosActivity.this, FormularioAlunosActivity.class);
                 visualizar.putExtra("alunoSelecionado", alunoParaSerAlterado);
                 startActivity(visualizar);
             }
